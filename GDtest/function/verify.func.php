@@ -1,6 +1,6 @@
 <?php
 /**
- * @param  string   $fontfile  字体文件
+ * @param  string   $fontfile  字体文件(注意路径)
  * @param  integer  $type      1:数字 2:字母 3:数字+字母 4:汉字
  * @param  integer  $length    验证码长度
  * @param  integer  $pixel     像素点个数

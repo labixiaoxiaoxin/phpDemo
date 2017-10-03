@@ -18,9 +18,9 @@
 				<td align="right">验证码：</td>
 				<td>
 					<input type="text" name="verify">
-					<img id="verifyImage" src="getVerify.php">
+					<img id="verifyImage" src="getCaptcha.php">
 					<!-- javascript:void(0) 这里表示这个链接不做跳转动作，执行onClick事件 -->
-					<a onclick="document.getElementById('verifyImage').src='getVerify.php?r='+Math.random()" href="javascript:void(0)">看不清,换一张</a>
+					<a onclick="document.getElementById('verifyImage').src='getCaptcha.php?r='+Math.random()" href="javascript:void(0)">看不清,换一张</a>
 				</td>
 			</tr>
 			<tr>

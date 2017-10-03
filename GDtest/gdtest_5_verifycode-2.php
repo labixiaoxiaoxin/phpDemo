@@ -14,6 +14,7 @@
 
 	// 3. 创建画笔颜色
 	function getRandColor($image){
+		
 		return imagecolorallocate($image, mt_rand(0,255), mt_rand(0,255), mt_rand(0,255));
 	}
 	
