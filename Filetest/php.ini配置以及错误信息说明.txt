@@ -1,0 +1,52 @@
+【文件上传配置 --- php.ini】
+
+服务器端配置：
+
+file_uploads = On				支持HTTP上传
+upload_tmp_dir ="d:/wamp64/tmp"	临时文件保存目录	
+upload_max_filesize = 2M		允许上传文件的最大值
+max_file_uploads = 20			允许一次上传的最大文件数
+post_max_size = 8M				POST方式发送数据的最大值
+
+max_execution_time = -1			设置脚本被解析器终止之前允许的最大执行时间，单位为秒
+max_input_time = 60				脚本解析输入数据允许的最大时间，单位是秒
+max_input_nesting_level = 64	设置输入变量的嵌套深度
+
+max_input_vars = 1000			接收多少输入的变量
+								(限制分别应用于$_GET、$_POST、$_COOKIE超全局变量)
+								减轻哈希碰撞
+								超过导致E_WARNING,更多的变量将从请求中截断
+memory_limit = 128M				最大单线程的独立内存使用量
+								也就是一个web请求，给予线程最大的内存使用量的定义
+
+
+
+【错误信息说明 --- $_FILES中error字段错误号说明】
+
+UPLOAD_ERR_OK					其值为0，没有错误发生，文件上传成功(临时目录)
+UPLOAD_ERR_INI_SIZE				其值为1，上传文件超过了upload_max_filesize限制的值
+UPLOAD_ERR_FORM_SIZE			其值为2，上传文件超过了html表单中MAX_FILE_SIZE指定值
+UPLOAD_ERR_PARTIAL				其值为3，文件只有部分被上传
+UPLOAD_ERR_NO_FILE				其值为4，文件没有被上传
+UPLOAD_ERR_NO_TMP_DIR			其值为6，找不到临时文件夹
+UPLOAD_ERR_CANT_WRITE			其值为7，文件写入失败
+UPLOAD_ERR_EXTENSION			其值为8，上传的文件被PHP扩展程序中断
+
+
+
+【文件上传限制】
+
+客户端限制：(客户端的限制对于会程序的人来说无效,审查元素可以改)
+
+通过表单隐藏域限制上传文件的最大值
+						<input type='hidden' name='MAX_FILE_SIZE' value='字节数'/>
+通过accept属性限制上传文件类型
+						<input type='file' name='myFile' accept='文件的mime类型'/>
+
+
+服务器端限制：
+
+限制上传文件大小
+限制上传文件类型
+检测是否为真实图片类型
+检测是否为HTTP POST方式上传
