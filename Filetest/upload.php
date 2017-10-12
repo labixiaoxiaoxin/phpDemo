@@ -6,7 +6,7 @@
 </head>
 <body>
 	<!-- method="post" enctype="multipart/form-data"  二者缺一不可 -->
-	<form action="doAction_1.php" method="post" enctype="multipart/form-data">
+	<form action="doAction_3.php" method="post" enctype="multipart/form-data">
 		<!-- 通过隐藏域来限制文件上传大小  审查元素可解除限制-->
 		<!-- <input type="hidden" name="MAX_FILE_SIZE" value="28167"> -->
 		请选择您要上传的文件：
