@@ -1,11 +1,12 @@
 <?php
-	$string="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
-	//echo $string{mt_rand(0,strlen($string)-1)};// { }可以实现字符串查找等操作
-	$code='';
-	for ($i=0; $i < 4; $i++) { //随机选取$string中的字母，并且rgb颜色随机
-		$code.='<span style="color:rgb('.mt_rand(0,255).','.mt_rand(0,255).','.mt_rand(0,255).')">'.$string{mt_rand(0,strlen($string)-1)}.'</span>';
-	}
-	
+$string = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+//echo $string{mt_rand(0,strlen($string)-1)};// { }可以实现字符串查找等操作
+$code = '';
+for ($i = 0; $i < 4; $i++) {
+    //随机选取$string中的字母，并且rgb颜色随机
+    $code .= '<span style="color:rgb(' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ',' . mt_rand(0, 255) . ')">' . $string{mt_rand(0, strlen($string) - 1)} . '</span>';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,8 +54,8 @@
 		<tr>
 			<td align="right">验证码</td>
 			<td>
-				<input type="text" name="verify" placeholder="请输入验证码..."><?php echo $code;?>
-				<input type="hidden" name="verify1" value='<?php echo strip_tags($code);?>'>
+				<input type="text" name="verify" placeholder="请输入验证码..."><?php echo $code; ?>
+				<input type="hidden" name="verify1" value='<?php echo strip_tags($code); ?>'>
 			</td>
 		</tr>
 
