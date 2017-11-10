@@ -1,0 +1,142 @@
+							初识jquery
+-----------------------------------------------------------------------
+
+$(document).ready
+						作用是等页面的文档（document）中的节点都加载完毕后，再执行后续的代码，因为我们在执行代码的时候，可能会依赖页面的某一个元素，我们要确保这个元素真正的的被加载完毕后才能正确的使用。
+jQuery对象
+						通过jQuery方法包装后的对象，是一个类数组对象。它与DOM对象完全不同，唯一相似的是它们都能操作DOM。
+						普通处理，通过标准JavaScript处理：
+							var p = document.getElementById('imooc');
+							p.innerHTML = '您好！通过慕课网学习jQuery才是最佳的途径';
+							p.style.color = 'red';
+						jQuery的处理：
+							var $p = $('#imooc');
+							$p.html('您好！通过慕课网学习jQuery才是最佳的途径').css('color','red');
+jquery对象=>DOM对象
+						jQuery是一个类数组对象，而DOM对象就是一个单独的DOM元素
+						var $div = $('div') //jQuery对象
+						var div = $div[0] //转化成DOM对象
+						div.style.color = 'red' //操作dom对象的属性
+						或者
+						var $div = $('div') //jQuery对象
+						var div = $div.get(0) //通过get方法，转化成DOM对象
+						div.style.color = 'red' //操作dom对象的属性
+
+DOM对象=>jquery对象
+						相比较jQuery转化成DOM，开发中更多的情况是把一个dom对象加工成jQuery对象。$(参数)是一个多功能的方法，通过传递不同的参数而产生不同的作用。
+						如果传递给$(DOM)函数的参数是一个DOM对象，jQuery方法会把这个DOM对象给包装成一个新的jQuery对象
+						var div = document.getElementsByTagName('div'); //dom对象
+						var $div = $(div); //jQuery对象
+						var $first = $div.first(); //找到第一个div元素
+						$first.css('color', 'red'); //给第一个元素设置颜色
+
+							jquery选择器
+-----------------------------------------------------------------------
+
+id选择器
+						$("#id")
+						//相当于js中的document.getElementByID，id唯一
+类选择器
+						$(".class")
+						//相对id选择器效率低一点，但可以多选
+元素选择器
+						$("element")
+						//相当于js中的document.getElementsByTagName
+全选择器
+						$("*")
+层级选择器：				
+						子选择器： 	    $("div > p") 子代元素
+						后代选择器：	    $("div   p") 后代元素
+						相邻兄弟选择器：	$("div + p") 相邻元素
+						一般兄弟选择器：	$("div ~ p") 后面所有兄弟元素
+
+基本筛选器
+$(":first")           	匹配第一个元素
+$(":last")				匹配最后一个元素
+$(":not(selector)")   	一个用来过滤的的选择器，
+						选择所有元素去除不匹配给定的选择器元素
+$(":eq(index)")       	在匹配的集合中选择索引值为index的元素
+$(":gt(index)")       	选择匹配集合中所有大于给定index(索引值)
+$(":even")            	选取索引值为偶数的元素，从0开始计数 even偶数
+$(":odd")             	选取索引值为奇数的元素，从0开始计数 odd奇数
+$(":lt(index)")       	选取匹配集合中所有索引值小于给定index参数的元素
+$(":header")          	选择所有标题元素，像h1,h2,h3等
+$(":lang(language)")  	选择指定语言的所有元素
+$(":root")            	选择该文档的根元素
+$(":animated")        	选择所有正在执行动画效果的元素
+
+内容筛选选择器
+$(":contains(text)")	选择所有包含指定文本的元素。
+$(":parent")			选择所有含有子元素或者文本的元素。
+$(":empty")				选择所有没有子元素的元素（包含文本节点）。
+$(":has(selector)")		选择元素中至少包含指定选择器的元素。
+
+可见性筛选选择器
+$(":visible")			选择所有显示的元素
+$(":hidden")			选择所有隐藏的元素
+						几种隐藏元素的方法：
+							(1) CSS display的值是none。
+							(2) type="hidden"的表单元素。
+							(3) 宽度和高度都显式设置为0。
+							(4) 一个祖先元素是隐藏的，该元素是不会在页面上显示
+							(5) CSS visibility的值是hidden
+							(6) CSS opacity的指是0
+						注意：
+						(1) 如果元素中占据文档中一定的空间,元素被认为是可见的。
+						(2) 可见元素的宽度或高度，是大于零。
+						(3) 元素的visibility: hidden 或 opacity: 0被认为是可见的，因为他们仍然占用空间布局。
+						(4) 不在文档中的元素是被认为是不可见的
+
+属性筛选选择器
+$("[attribute|='value']")
+						选择指定属性值等于给定字符串或以该字符串为前缀（该字符串后跟一个连字符“-”）的元素。
+$("[attribute*='value']")
+						选择指定属性包含一个给定子字符串的元素（选择给定的属性是以包含某些值得元素）。
+$("[attribute~='value']")
+						选择指定属性用空格分隔的值中包含一个给定值的元素。
+$("[attribute='value']")
+						选择指定属性是给定值的元素。
+$("[attribute!='value']")
+						选择不存在指定属性，或者指定的属性值不等于给定值的元素。
+$("[attribute^='value']")
+						选择指定属性是以给定字符串开始的元素。
+$("[attribute$='value']")
+						选择指定属性是以给定值结尾的元素，这个比较是区分大小写的。
+$("[attribute]")
+						选择所有具有指定属性的元素，该属性值可以是任何值。
+$("[attributeFilter1][attributeFilterN]")
+						选择匹配所有指定的属性筛选器的元素。
+						注意，最实用的是：
+						$("[attribute='value']")
+						$("[attribute*='value']")
+
+						eg：
+						$("div[p2]")
+						//选择所有div中有属性p2的div
+						$("div[name='p1']")
+						//选择所有div中name为p1的div
+						$("div[name*='test']")
+						//选择所有div中name包含test的div
+
+子元素筛选选择器
+$(":first-child")		选择所有父级元素下的第一个元素
+$(":last-child")		选择所有父级元素下的最后一个元素
+$(":only-child")		如果某个元素是其父元素的唯一子元素，那么它就会被选中
+$(":nth-child")			选择的他们所有父元素的第n个子元素
+$(":nth-last-child")	选择所有他们父元素的第n个子元素，技术从最后一个元素到第一个
+
+						注意事项：
+						(1) :first只匹配一个单独的元素，但是:first-child选择器可以匹配多个：即为每个父级元素匹配第一个子元素。这相当于:nth-child(1)
+						(2) :last 只匹配一个单独的元素， :last-child 选择器可以匹配多个元素：即，为每个父级元素匹配最后一个子元素
+						(3) 如果子元素只有一个的话，:first-child与:last-child是同一个
+						(4) :only-child匹配某个元素是父元素中唯一的子元素，就是说当前子元素是父元素中唯一的元素，则匹配
+						(5) jQuery实现:nth-child(n)是严格来自CSS规范，所以n值是“索引”，也就是说，从1开始计数，:nth-child(index)从1开始的，而eq(index)是从0开始的
+						(6) nth-child(n) 与 :nth-last-child(n) 的区别前者是从前往后计算，后者从后往前计算
+
+						eg:
+						$('.first-div a:first-child')
+						//表示选择类.first-div下的第一个a元素
+						$('.last-div a:nth-child(2)')
+						//表示选择类.last-div下所有div中a元素中的第2个
+
+表单元素选择器

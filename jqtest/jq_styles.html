@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			font-size: 12px;
+			text-align: center;
+			border:solid 1px #888;
+			padding: 5px 0;
+			width: 200px;
+		}
+	</style>
+	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("div").html("Hello,World!");
+			//通过jQuery实现
+			$("#p2").html("I love jquery").css("color","red");
+		});	
+	</script>
+	<script type="text/javascript">
+		//通过JavaScript实现
+		window.onload=function(){
+			var p1=document.getElementById('p1');
+			p1.innerHTML="I love javascript";
+			p1.style.color="blue";
+		};
+	</script>
+
+</head>
+<body>
+	<div></div>
+	<p id="p1"></p>
+	<p id="p2"></p>
+
+	<span>1</span>
+	<span>2</span>
+	<span>3</span>
+	<script type="text/javascript">
+		//jQuery对象转化为DOM对象 【注意js代码顺序，不放在onload中的话，要放在html之后才能生效】
+		var spans=$("span");
+		var span=spans.get(2);//方法1
+		// var span=spans[1]; //方法2
+		span.style.color="red";
+	</script>
+
+	<h2 id="myh2">你好，id选择器</h2>
+	<script type="text/javascript">
+		$("#myh2").css("color","pink");
+	</script>
+
+	<h2 class="myh2_2">你好，类选择器</h2>
+	<script type="text/javascript">
+		$(".myh2_2").css("border","pink dotted 2px");
+	</script>
+
+	<h3>2333,元素选择器</h3>
+	<h3>2333,元素选择器</h3>
+	<h3>2333,元素选择器</h3>
+	<script type="text/javascript">
+		$("h3").css("color","green");
+		$("h3:visible").css("border","solid 1px blue");
+	</script>
+</body>
+</html>
