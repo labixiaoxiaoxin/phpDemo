@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.one{
+			background-color: #ccc;
+			font-size: 20px;
+			color: red;
+		}
+		.two{
+			background-color: #666;
+			font-size: 30px;
+			color: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		function showStyle(){
+			document.getElementById("p1").className="one";
+		}
+		function changeStyle(){
+			document.getElementById("p1").className="two";
+		}
+	</script>
+</head>
+<body>
+	<p id="p1">你好，JavaScript</p>
+	<input type="button" name="" value="添加样式" onclick="showStyle()">
+	<input type="button" name="" value="改变样式" onclick="changeStyle()">
+</body>
+</html>

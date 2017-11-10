@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function openwin(){
+			window.open("http://www.baidu.com","_blank");
+		}
+		function mouseover(){
+			confirm("请输入密码后再确认");
+		}
+		function mouseout(){
+			alert("不要离开，点击这里");
+		}
+		function focus1(){
+			alert("获得焦点");
+		}
+		function blur1(){
+			alert("失去焦点");
+		}
+		function select1(){
+			alert("您已选中该内容");
+		}
+		function change1(){
+			alert("您已改变文本内容");
+		}
+		function loading(){
+			alert("加载中，请稍候。。。---onload事件");
+		}
+
+		window.onunload=onunload_message;//只有ie支持
+		function onunload_message(){
+			alert("您确定要离开本页面吗");
+		}
+	</script>
+</head>
+<body onload="loading()">
+	<input type="button" name="" value="onclick事件" onclick="openwin()">
+	<input type="button" name="" value="onmouseover事件" onmouseover="mouseover()">
+	<input type="button" name="" value="onmouseout事件" onmouseout="mouseout()">
+	<input type="button" name="" value="onfocus事件" onfocus="focus1()">
+	<input type="text" value="onblur事件" onblur="blur1()">
+	<input type="text" name="" value="onselect事件" onselect="select1()">
+	<input type="text" name="" value="onchange事件" onchange="change1()">
+
+</body>
+</html>

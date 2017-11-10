@@ -1,0 +1,64 @@
+							常用互动方法
+-----------------------------------------------------------------------
+
+变量声明： 			var 变量名
+					在js中区分大小写，如变量mychar和myChar是不一样的。
+					变量虽然也可以不声明，直接使用，但不规范，需要先声明，后使用。
+
+输出内容：			document.write
+					document.write("I love JavaScript！"); //内容用""括起来，""里的内容直接输出。
+					document.write(mystr);  //直接写变量名，输出变量存储的内容。
+					document.write(mystr+"I love JavaScript"); //多项内容之间用+号连接
+					document.write(mystr+"<br>");//输出hello后，输出一个换行符
+
+警告：				alert(字符串或变量);
+
+确认：				confirm(str);
+					返回值：Boolean
+
+提问：				prompt(str1, str2);
+					参数：
+					str1: 要显示在消息对话框中的文本，不可修改
+					str2：文本框中的内容，可以修改
+					返回值：Boolean
+
+打开新窗口：			window.open([URL], [窗口名称], [参数字符串]);
+					参数：
+					URL：要显示的链接或路径
+					窗口名称：
+					(1)该名称由字母、数字和下划线字符组成。
+					(2)"_top"、"_blank"、"_self"具有特殊意义的名称。
+					    _blank：在新窗口显示目标网页
+					    _self：在当前窗口显示目标网页
+					    _top：框架网页中在上部窗口中显示目标网页
+					参数字符串：设置窗口参数
+
+关闭窗口：			window.close();   //关闭本窗口
+					<窗口对象>.close();   //关闭指定的窗口
+
+							DOM操作
+-----------------------------------------------------------------------
+认识DOM：
+					文档对象模型DOM（Document Object Model）定义访问和处理HTML文档的标准方法。DOM 将HTML文档呈现为带有元素、属性和文本的树结构（节点树）。
+DOM节点：
+					元素节点：<html>、<p>等标签
+					文本节点：向用户展示的内容
+					属性节点：如<a>标签中的href等
+
+通过ID获取元素：		document.getElementById(“id”);  //是个对象
+
+innerHTML:			Object.innerHTML   //获取对象中的内容
+
+改变HTML样式：		Object.style.property=new style;
+					如obj.style.color="#fff";
+
+显示和隐藏：			Object.style.display = value;
+					value取值：
+						none --隐藏
+						block--显示
+
+控制类名：			object.className = classname;  //换样式
+
+取消样式：			(1) document.getElementById("txt").style="";
+					(2) document.getElementById("txt").removeAttribute("style");
+					

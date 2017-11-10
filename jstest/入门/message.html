@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var mychar="Hello world<br>";
+		document.write(mychar);
+		alert(mychar);
+		function confirm1(){
+			var message=confirm("你是男士吗？");
+			if (message) {
+				document.write("你是男士。");
+			}else{
+				document.write("你是女士。");
+			}
+		}
+		function prompt1(){
+			var score=prompt("你的分数是：",90);
+			if (score>=90) {
+				document.write("very good");
+			}else if (score>=75) {
+				document.write("good");
+			}else if (score>=60) {
+				document.write("just so so");
+			}else{
+				document.write("bad");
+			}
+		}
+		function wopen1(){
+			window.open("http://www.baidu.com","_blank","width=500px,height=400px,top=100");
+		}
+		function wopen2(){
+			var myconfirm=confirm("确定离开本页面吗？");
+			if (myconfirm) {
+				var url=prompt("请输入地址：","http://www.baidu.com");
+				if (url) {
+					window.open(url,"_blank");
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="confirm" onclick="confirm1()">
+	<input type="button" name="" value="prompt" onclick="prompt1()">
+	<input type="button" name="" value="open1" onclick="wopen1()">
+	<input type="button" name="" value="open2" onclick="wopen2()">
+</body>
+</html>

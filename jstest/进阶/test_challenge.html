@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>切换选项卡</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
+		.card{
+			width: 320px;
+		}
+		.top{
+			width: 320px;	
+		}
+		.top li{	
+			float: left;
+			width: 88px;
+			line-height: 32px;
+			list-style: none;
+			border: #ccc solid 1px;
+			text-align: center;
+		}
+		.content{
+			width: 320px;
+			height: 110px;
+			left: 0;
+			top: 32px;
+		}
+		.content div{
+			width: 90%;
+			padding:10px;	
+		}
+		.top .showli{
+			border-top: red solid 2px;
+			border-bottom: #fff solid 4px;
+		}
+		.top .hideli{
+			border-top: #ccc solid 1px;
+			border-bottom: #ccc solid 1px;
+		}
+		.content .show{
+			display: block;
+			border:blue solid 1px;
+			border-top:red solid 2px;
+			margin-top: -4px;
+		}
+		.hide{
+			display: none;
+		}
+		.clearfix:after{
+			content:"";display:block;clear:both;
+		}
+		.clearfix{
+			zoom:1;
+		}
+	</style>
+	<script type="text/javascript">
+		function active(obj){
+			var myul=document.getElementById("list").childNodes;
+			var name=obj.innerHTML;
+			var myactive;
+			var res=document.getElementsByName("house");
+			if (name=="房产") {
+				res[0].className="show";
+				res[1].className="hide";
+				res[2].className="hide";
+				myul[1].className="showli";
+				myul[3].className="hideli";
+				myul[5].className="hideli";
+			}else if (name=="家居") {
+				res[0].className="hide";
+				res[1].className="show";
+				res[2].className="hide";
+				myul[1].className="hideli";
+				myul[3].className="showli";
+				myul[5].className="hideli";
+			}else if (name=="二手房") {
+				res[0].className="hide";
+				res[1].className="hide";
+				res[2].className="show";
+				myul[1].className="hideli";
+				myul[3].className="hideli";
+				myul[5].className="showli";
+			}	
+		}
+	</script>
+</head>
+<body>
+	<div class="card clearfix">	
+		<ul class="top clearfix" id="list">
+			<li class="showli" onclick="active(this)">房产</li>
+			<li onclick="active(this)">家居</li>
+			<li onclick="active(this)">二手房</li>
+		</ul>
+		<div class="content clearfix">			
+			<div name="house" class="show">
+				275万购昌平邻铁三居 总价20万买一居<br>
+			    200万内购五环三居 140万安家东三环<br>
+			    北京首现零首付楼盘 53万购东5环50平<br>
+			    京楼盘直降5000 中信府 公园楼王现房<br>
+			</div>
+			<div name="house" class="hide">
+				40平出租屋大改造 美少女的混搭小窝<br>
+				经典清新简欧爱家 90平老房焕发新生<br>
+				新中式的酷色温情 66平撞色活泼家居<br>
+				瓷砖就像选好老婆 卫生间烟道的设计
+			</div>
+			<div name="house" class="hide">
+				通州豪华3居260万 二环稀缺2居250w甩<br>
+				西3环通透2居290万 130万2居限量抢购<br>
+				黄城根小学学区仅260万 121平70万抛!<br>
+				独家别墅280万 苏州桥2居优惠价248万<br>
+			</div>	
+		</div>	
+	</div>
+</body>
+</html>

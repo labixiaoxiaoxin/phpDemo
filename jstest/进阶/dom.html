@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function getnumByname(){
+			var mynum=document.getElementsByName('myt');
+			alert(mynum.length);
+		}
+		function getnumByTagname(){
+			var mynum=document.getElementsByTagName('input');
+			alert(mynum.length);
+		}
+		 function checkall(){
+	            var hobby = document.getElementsByTagName("input");
+	          // 任务1 
+	            for(i=0;i<hobby.length;i++){
+	                if(hobby[i].type=="checkbox"){
+	                    hobby[i].checked=true;
+	                }
+	            }
+	        }
+	        function clearall(){
+	            var hobby = document.getElementsByName("hobby");
+	         // 任务2    
+	             for(i=0;i<hobby.length;i++){
+	                if(hobby[i].type=="checkbox"){
+	                    hobby[i].checked=false;
+	                }
+	            }
+	        }  
+	        function checkone(){
+	            var j=document.getElementById("wb").value;
+	         // 任务3
+	            document.getElementById("hobby"+j).checked=true;
+	        }
+	</script>
+</head>
+<body>
+	<input name="myt" type="text" value="1">
+	<input name="myt" type="text" value="2">
+	<input name="myt" type="text" value="3">
+	<input name="myt" type="text" value="4">
+	<input name="myt" type="text" value="5">
+	<input name="myt" type="text" value="6">
+	<br />
+	<input type="button" onclick="getnumByname()" value="getElementsByName()看看有几项？" />
+	<input type="button" onclick="getnumByTagname()" value="getElementsByTagName()看看有几项？" />
+	<br />
+
+    <form>
+		请选择你爱好:<br>
+		<input type="checkbox" name="hobby" id="hobby1">  音乐
+		<input type="checkbox" name="hobby" id="hobby2">  登山
+		<input type="checkbox" name="hobby" id="hobby3">  游泳
+		<input type="checkbox" name="hobby" id="hobby4">  阅读
+		<input type="checkbox" name="hobby" id="hobby5">  打球
+		<input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
+		<input type="button" value = "全选" onclick = "checkall();">
+		<input type="button" value = "全不选" onclick = "clearall();">
+		<p>请输入您要选择爱好的序号，序号为1-6:</p>
+		<input id="wb" name="wb" type="text" >
+		<input name="ok" type="button" value="确定" onclick = "checkone();">
+    </form>
+    <br />
+
+    <h1 id="title_1">I Love JavaScript!</h1>
+    <script type="text/javascript">
+    	var res=document.getElementById('title_1');
+    	mytitle=res.getAttribute("id");
+    	document.write(mytitle);
+    	res.setAttribute("style","background-color:red;color:#fff;width:400px;");
+
+    	//节点属性
+    	document.write("<br>nodeName:"+res.nodeName+"<br>nodeValue:"+res.nodeValue+"<br>nodeType:"+res.nodeType+"<br>");
+    </script>
+    <br />
+
+    <!-- 子节点 -->
+	<div>
+		javascript  
+		<p>javascript</p>
+		<div>jQuery</div>
+		<h5>PHP</h5>
+	</div>
+	<script type="text/javascript">
+		var res= document.getElementsByTagName("div")[0].childNodes;
+		//[0]表示第一个div，因为标签div可能不唯一。
+		for(i=0;i<res.length;i++){
+			document.write(res[i].nodeName+"-"+res[i].nodeValue+"-"+res[i].nodeType+"<br>");
+		}
+	</script>
+	<br>
+
+	<!-- 上一个节点和下一个节点 -->
+	<ul id="u1">   
+            <li id="a">javascript</li>   
+            <li id="b">jquery</li>   
+            <li id="c">html</li>   
+    </ul>   
+    <ul id="u2">   
+        <li id="d">css3</li>   
+        <li id="e">php</li>   
+        <li id="f">java</li>   
+    </ul>   
+	<script type="text/javascript">
+	    function get_nextSibling(n){
+	        var x=n.nextSibling;
+	        while (x && x.nodeType!=1){
+	            x=x.nextSibling;//当x的下一个节点不是标签的时候继续+1
+	        }
+	        return x;
+	    }
+	    function get_previousSibling(n){
+	        var x=n.previousSibling;
+	        while(x&&x.nodeType!=1){
+	            x=x.previousSibling;//当x的上一个节点不是标签的时候继续-1
+	        }
+	        return x;
+	    }
+	    var x=document.getElementsByTagName("li")[0];
+	    document.write(x.nodeName);
+	    document.write(" = ");
+	    document.write(x.innerHTML);
+	    
+	    var y=get_nextSibling(x);
+	    
+	    if(y!=null){
+	        document.write("<br />nextsibling: ");
+	        document.write(y.nodeName);
+	        document.write(" = ");
+	        document.write(y.innerHTML);
+	    }else{
+	      document.write("<br>已经是最后一个节点");      
+	    }
+	    var z=get_previousSibling(x);
+	    
+	    if(z!=null){
+	        document.write("<br />previoussibling: ");
+	        document.write(z.nodeName);
+	        document.write(" = ");
+	        document.write(z.innerHTML);
+	    }else{
+	      document.write("<br>已经是第一个节点");      
+	    }
+	</script>
+	<br>
+
+	<!-- 插入节点 -->
+	<ul id="test">
+		<li>JavaScript</li>
+		<li>HTML</li>
+	</ul>
+	<input type="button" value="删除节点" onclick="delChild()">
+	<script type="text/javascript">
+		//在子节点最后插入
+		var otest = document.getElementById("test");  
+		var newli=document.createElement("li");
+		newli.innerHTML="php";
+		otest.appendChild(newli);
+		//在某个子节点前插入
+		var node=otest.firstChild;
+		//创建元素节点
+		var newnode=document.createElement("li");
+		newnode.innerHTML="MySQL";
+		otest.insertBefore(newnode,node);
+		//删除节点
+		function delChild(){
+			var child=otest.childNodes;
+			for(i=0;i<child.length;i++){
+				otest.removeChild(child[i]);
+			}
+		}
+	</script> 
+	<br>
+
+	<!-- 替换元素节点 -->
+	<div>
+		<b id="oldnode">JavaScript</b>是一个很常用的技术，为网页添加动态效果。
+	</div>
+  	<a href="javascript:replaceMessage()"> 将加粗改为斜体</a>
+    <script type="text/javascript">
+      function replaceMessage(){
+        var otest=document.getElementById("oldnode");
+        var text=otest.innerHTML;
+        var newnode=document.createElement("i");
+		newnode.innerHTML=text;
+		otest.parentNode.replaceChild(newnode,otest);
+       }    
+    </script>
+	<br>
+
+	<!-- 创建文本节点 -->
+	<script type="text/javascript">
+		var myp=document.createElement("p");
+		myp.className="my_p";
+		var child=document.createTextNode("I love JavaScript!");
+		myp.appendChild(child);
+		document.body.appendChild(myp);
+	</script>
+
+	<!-- 浏览器可视区域大小 -->
+	<script type="text/javascript">
+		document.write(window.innerWidth+"px "+window.innerHeight+"px<br>");
+		document.write(document.documentElement.clientWidth+"px "+document.documentElement.clientHeight+"px<br>");
+		document.write(document.body.clientWidth+"px "+document.body.clientHeight+"px<br>");
+
+		document.write(document.documentElement.scrollWidth+"px "+document.documentElement.scrollHeight+"px<br>");
+		document.write(document.body.scrollWidth+"px "+document.body.scrollHeight+"px<br>");
+	</script>
+
+</body>
+</html>

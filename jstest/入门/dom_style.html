@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function hideText(){
+			document.getElementById('p1').style.display="none";
+		}
+		function showText(){
+			document.getElementById('p1').style.display="block";
+		}
+	</script>
+</head>
+<body>
+	<p id="p1">Hello,javascript</p>
+	<script type="text/javascript">
+		var mes=document.getElementById("p1");
+		mes.style.background="#ccc";
+		mes.style.color="red";
+		mes.style.fontSize="20px";
+	</script>
+	<input type="button" name="" value="hideText" onclick="hideText()">
+	<input type="button" name="" value="showText" onclick="showText()">
+</body>
+</html>

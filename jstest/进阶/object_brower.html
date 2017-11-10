@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		//setInterval()和clearInterval()
+		var i;
+		function clock(){
+			var mtime=new Date();
+			var mytime=mtime.getHours()+":"+mtime.getMinutes()+":"+mtime.getSeconds();
+			document.getElementById('time1').value=mytime;
+		}
+		function startClock(){
+			i=setInterval("clock()",1000);
+		}
+		function stopClock(){
+			clearInterval(i);
+		}
+
+		//setTimeout()和clearTimeout()
+		var num=0;
+		var j;
+		function mytimeout(){
+			document.getElementById('num_1').value=num;
+			num+=1;
+			j=setTimeout("mytimeout()",1000);
+		}
+		function mytimeoutclear(){
+			clearTimeout(j);
+		}
+
+		//history
+		var HL=window.history.length;
+		document.write("历史浏览url数量："+HL+"<br>");
+		function goBack(){
+			window.history.back();
+			// window.history.go(-1);
+		}
+		function goForward(){
+			window.history.forward();
+			// window.history.go(1);
+		}
+
+		//location
+		function golocation(){
+			location.href="http://www.baidu.com";
+		}
+
+		//screen
+		document.write( "屏幕宽度："+window.screen.height+"px"+"<br>");
+		document.write( "屏幕高度："+window.screen.width+"px"+"<br>"); 
+		document.write("可用宽度：" +screen.availHeight+"px"+"<br>");
+		document.write("可用高度：" +window.screen.availWidth+"px"+"<br>");
+
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="time1" size="50">
+	<input type="button" value="setInterval()" onclick="startClock()">
+	<input type="button" value="clearInterval(i)" onclick="stopClock()">
+	<br>
+	<input type="text" name="" id="num_1" size="50">
+	<input type="button" value="setTimeout()" onclick="mytimeout()">
+	<input type="button" value="clearTimeout(i)" onclick="mytimeoutclear()">
+	<br>
+	<a href="#target1">锚点</a>
+	<a name="target1"></a>
+	<input type="button" value="返回上一个页面" onclick="goBack();">
+	<input type="button" value="返回下一个页面" onclick="goForward();">
+	<br>
+	<input type="button" value="location" onclick="golocation();">
+	<br>
+
+	<h1>操作成功</h1>
+	<span id="myseconds">60</span>秒后回到主页&nbsp;
+	<a href="#" onclick="goback()">返回</a>
+	<script type="text/javascript">  
+		//获取显示秒数的元素，通过定时器来更改秒数。
+		var sec=document.getElementById('myseconds').innerHTML;
+		function changeSec(){ 
+		    sec=sec-1;
+		    document.getElementById('myseconds').innerHTML=sec;
+		    if (sec<1) {
+		   		location.href="http://www.baidu.com";
+		    }  
+		}
+		setInterval("changeSec()",1000);
+		//通过window的location和history对象来控制网页的跳转。
+		function goback(){
+			window.history.back();
+		}
+	</script> 
+</body>
+</html>
